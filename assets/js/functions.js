@@ -1,11 +1,7 @@
 const objFunctions = {
-  checkValidChars: (str) => {
+  checkValidChars: str => {
     let regex = /[a-zA-Z]/;
-    if (regex.test(str)) {
-      return true;
-    } else {
-      return false;
-    }
+    return regex.test(str);
   },
   selvaKorpi: (str) => {
     let result = [];
