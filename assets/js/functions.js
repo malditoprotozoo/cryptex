@@ -5,7 +5,7 @@ const objFunctions = {
   },
   selvaKorpi: (str) => {
     let result = [];
-    let errorMsg = 'Sorry, if you input numbers or empty spaces we\'ve nothing to cipher or decipher :(';
+    let errorMsg = 'Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(';
     if (objFunctions.checkValidChars(str)) {
       let selva = ['s', 'e', 'l', 'v', 'a', 'S', 'E', 'L', 'V', 'A'];
       let korpi = ['k', 'o', 'r', 'p', 'i', 'K', 'O', 'R', 'P', 'I'];
@@ -24,6 +24,25 @@ const objFunctions = {
       return errorMsg;
     }
     return result.toString().replace(/,/g, '');
+  },
+  caesarCipher: (str, shift) => {
+    let result = '';
+    let errorMsg = 'Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(';
+    if (objFunctions.checkValidChars(str)) {
+      for (let i = 0; i < str.length; i++) {
+        let codeAscii = str.charCodeAt(i);
+        if (codeAscii >= 65 && codeAscii <= 90) {
+          result += String.fromCharCode((codeAscii - 65 + shift) % 26 + 65);
+        } else if (codeAscii >= 97 && codeAscii <= 122) {
+          result += String.fromCharCode((codeAscii - 97 + shift) % 26 + 97);
+        } else {
+          result += String.fromCharCode(codeAscii);
+        }
+      }
+      return result;
+    } else {
+      return errorMsg;
+    }
   }
 };
 

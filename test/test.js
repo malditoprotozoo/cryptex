@@ -22,8 +22,22 @@ describe('Checking if the Selva/Korpi cipher is working correctly', () => {
     assert.equal('Victoria', functions.selvaKorpi('Pactelai'));
   });
   it('Should return error message if the user only inputs numbers or empty spaces', () => {
-    assert.equal('Sorry, if you input numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.selvaKorpi('123'));
-    assert.equal('Sorry, if you input numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.selvaKorpi(' '));
-    assert.equal('Sorry, if you input numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.selvaKorpi(''));
-  })
+    assert.equal('Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.selvaKorpi('123'));
+    assert.equal('Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.selvaKorpi(' '));
+    assert.equal('Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.selvaKorpi(''));
+  });
+});
+
+describe('Checking if Caesar Cipher works correctly', () => {
+  it('Should return the word correctly ciphered', () => {
+    assert.equal('Voawzhcb', functions.caesarCipher('Hamilton', 14));
+    assert.equal('Wdars77', functions.caesarCipher('Eliza77', 18));
+    assert.equal('C\'g mi bohals', functions.caesarCipher('I\'m so hungry', 20));
+    assert.equal('Ñvñv Jvywz', functions.caesarCipher('Ñoño Corps', 33));
+  });
+  it('Should return error message if the user only inputs numbers or empty spaces', () => {
+    assert.equal('Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.caesarCipher('123', 33));
+    assert.equal('Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.caesarCipher(' ', 2));
+    assert.equal('Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(', functions.caesarCipher('', 5));
+  });
 });
