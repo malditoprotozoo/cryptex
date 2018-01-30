@@ -3,6 +3,10 @@ const objFunctions = {
     let regex = /[a-zA-Z]/;
     return regex.test(str);
   },
+  replaceNumbers: str => {
+    let regex = /[\d]/g;
+    return str.replace(regex, '');
+  },
   selvaKorpi: (str) => {
     let result = [];
     let errorMsg = 'Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(';
@@ -27,7 +31,7 @@ const objFunctions = {
   },
   caesarCipher: (str, shift) => {
     let result = '';
-    let errorMsg = 'Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher or decipher :(';
+    let errorMsg = 'Sorry, if you input only numbers or empty spaces we\'ve nothing to cipher :(';
     if (objFunctions.checkValidChars(str)) {
       for (let i = 0; i < str.length; i++) {
         let codeAscii = str.charCodeAt(i);
@@ -43,6 +47,36 @@ const objFunctions = {
     } else {
       return errorMsg;
     }
+  },
+  caesarDecipher: (str, shift) => {
+    let result = '';
+    let errorMsg = 'Sorry, if you input only numbers or empty spaces we\'ve nothing to decipher :(';
+    if (objFunctions.checkValidChars(str)) {
+      for (let i = 0; i < str.length; i++) {
+        let codeAscii = str.charCodeAt(i);
+        if (codeAscii >= 65 && codeAscii <= 90) {
+          result += String.fromCharCode((codeAscii - 65 - shift + 52) % 26 + 65);
+        } else if (codeAscii >= 97 && codeAscii <= 122) {
+          result += String.fromCharCode((codeAscii - 97 - shift + 52) % 26 + 97);
+        } else {
+          result += String.fromCharCode(codeAscii);
+        }
+      }
+      return result;
+    } else {
+      return errorMsg;
+    }
+  },
+  alphabetNumbers: (str) => {
+    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    let alphabetUpper = alphabet.map(i => i.toUpperCase());
+    let cleanStr = objFunctions.replaceNumbers(str);
+    let result = '';
+    for (let i = 0; i < cleanStr.length; i++) {
+      result += alphabet.indexOf(cleanStr[i]);
+    }
+    return result;
   }
 };
 
