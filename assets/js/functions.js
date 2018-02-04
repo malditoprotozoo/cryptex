@@ -69,7 +69,7 @@ const objFunctions = {
   },
   alphabetNumbers: (str) => {
     let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     let alphabetUpper = alphabet.map(i => i.toUpperCase());
     let cleanStr = objFunctions.replaceNumbers(str);
     let result = '';
@@ -80,6 +80,6 @@ const objFunctions = {
   }
 };
 
-if (typeof module != 'undefined' && module.exports) {
+if (typeof module !== 'undefined' && module.exports) {
   module.exports = objFunctions;
 };

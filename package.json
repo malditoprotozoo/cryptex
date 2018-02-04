@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap-sweetalert": "^1.0.1",
+    "eslint": "^4.17.0",
     "mocha": "^5.0.0"
   }
 }
